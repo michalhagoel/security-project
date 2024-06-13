@@ -94,7 +94,7 @@ router.post("/", async (req, res) => {
   const historyPassword = [];
   // Insert the user with hashed password and empty password_history into the database using prepared statement
   // const insertQuery = "INSERT INTO users (email, password, fullname, password_history) VALUES ('" + email + "','" + password + "','" + fullname + "'," + historyPassword + "')";
-  const insertQuery = "INSERT INTO users SET email='" + email + "', password='" + password + "',fullname='" + fullname + "',password_history='" + historyPassword + "')";
+  const insertQuery = "INSERT INTO users SET email='" + email + "', password='" + hash + "',fullname='" + fullname + "',password_history='" + JSON.stringify(historyPassword) + "'";
   // sarelb25@gmail.com', password="AAA", fullname="AB AB", id=2 ON DUPLICATE KEY UPDATE password="Vf7HBZgwYS0="; -- 
   db.userDbConfig.query(
     insertQuery,
